@@ -3,6 +3,9 @@
 const express = require ("express");
 const app = express()
 
+// Traer objeto de conexion 
+const sequelize = require('./util/database') 
+
 // middleware 
 app.use(express.json());
 
@@ -12,7 +15,12 @@ app.get('/test', (request , response)=>{
     response.send('<h1>Servidor funcionando</h1>');
 })
 
-// levantar el server y escuchat peticiones 
+sequelize.sync()
+.then (result=>{
+    // levantar el server y escuchat peticiones 
 app. listen(8080,()=>{
     console.log("Servidor escuchando 🎧")
 })
+})
+
+.catch(error=>console.log(error));

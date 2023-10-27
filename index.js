@@ -19,7 +19,7 @@ app.get('/test', (request , response)=>{
     response.send('<h1>Servidor funcionando</h1>');
 })
 
-sequelize.sync()
+sequelize.sync(/*{force:true}*/)
 .then (result=>{
     // levantar el server y escuchat peticiones 
 app. listen(8080,()=>{
